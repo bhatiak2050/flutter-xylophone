@@ -5,14 +5,15 @@ void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
 
-  FlatButton drawButton(int no, MaterialColor color){
-    return FlatButton(
-      color: color,
-      child: Text(no.toString()),
-      onPressed: () {
-        final player = AudioCache();
-        player.play('note$no.wav');
-      },
+  Expanded drawButton(int no, MaterialColor color){
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          final player = AudioCache();
+          player.play('note$no.wav');
+        }, child: null,
+      ),
     );
   }
 
@@ -20,6 +21,7 @@ class XylophoneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Center(
             child: Column(
